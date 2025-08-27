@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Click Reveal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E0F7F7; /* Light turquoise background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.1); /* Slight zoom on hover */
+        }
+
+        /* Hidden text initially */
+        .hidden-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            font-size: 1.2rem;
+            color: #006d6d; /* Dark turquoise */
+            margin-top: 20px;
+        }
+
+        /* When visible */
+        .hidden-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Clickable image -->
+    <img src="TShirt Com (1).gif" alt="Click Me" id="clickImage">
+
+    <!-- Hidden text -->
+    <div class="hidden-text" id="text">
+        🌸 Surprise! This is your animated text!
+    </div>
+
+    <script>
+        const image = document.getElementById('clickImage');
+        const text = document.getElementById('text');
+
+        image.addEventListener('click', () => {
+            text.classList.toggle('show'); // Toggle visibility
+        });
+    </script>
+
+</body>
+</html>

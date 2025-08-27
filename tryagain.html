@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Animation Example</title>
+<style>
+/* Initial state: hidden and moved down */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+/* Class to apply when element comes into view */
+.animate-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Simple styling for demo */
+button, h2, img {
+    margin: 50px auto;
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<h2 class="animate-on-scroll">Scroll to reveal this heading</h2>
+<button class="animate-on-scroll">Scroll to reveal button</button>
+<img class="animate-on-scroll" src="your-image.png" alt="Scroll Image" width="200">
+
+<script>
+// Select all elements to animate
+const elements = document.querySelectorAll('.animate-on-scroll');
+
+// Use Intersection Observer to detect when elements enter viewport
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show'); // add class when visible
+        }
+    });
+}, { threshold: 0.1 }); // trigger when 10% visible
+
+elements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
